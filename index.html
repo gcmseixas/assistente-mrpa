@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assistente de Controle Pressórico</title>
+   	<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🫀</text></svg>">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header>
+        <div class="titulos">    
+            <h1>Monitorização Residencial de Pressão Arterial</h1>
+            <h2>Assistente de Registro de MRPA no PEC e-SUS</h2>
+        </div>
+        <div class="img">    
+            <img src="logo-esus.png" alt="Logo e-SUS" style="height: 70px;">
+        </div>
+    </header>
+
+    <main>
+        <div class="card">
+            <div class="card-title">Valores Obtidos</div>
+            
+            <div class="date-group">
+                <div class="input-field">
+                    <label for="data-inicial">Data Inicial</label>
+                    <input type="date" id="data-inicial">
+                </div>
+                <div class="input-field">
+                    <label for="data-final">Data Final</label>
+                    <input type="date" id="data-final">
+                </div>
+            </div>
+
+            <div class="table-container">
+                <table id="mrpa-table">
+                    <thead>
+                        <tr>
+                            <th style="width: 15%;">Medição</th>
+                            <th style="width: 42.5%;">PA Sistólica (mmHg)</th>
+                            <th style="width: 42.5%;">PA Diastólica (mmHg)</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                    </tbody>
+                </table>
+            </div>
+            
+            <button class="btn-secondary" id="btn-add-rows" type="button">Adicionar +5 Medições</button>
+            <br><button class="btn-secondary" id="btn-model" type="button">Download do modelo para impressão</button>
+            
+            
+        </div>
+
+        <div class="card">
+            <div class="card-title">Resultado</div>
+            
+            <div class="summary-box">
+                <div class="summary-item">
+                    <div class="label">Medições</div>
+                    <div class="value" id="count-val">0</div>
+                </div>
+                <div class="summary-item">
+                    <div class="label">PAS Média</div>
+                    <div class="value" id="pas-media-val">-</div>
+                </div>
+                <div class="summary-item">
+                    <div class="label">PAD Média</div>
+                    <div class="value" id="pad-media-val">-</div>
+                </div>
+            </div>
+
+            <div class="output-options">
+                <label class="radio-label">
+                    <input type="radio" name="output-type" value="simples" checked> Texto Simples
+                </label>
+                <label class="radio-label">
+                    <input type="radio" name="output-type" value="completo"> Texto Completo
+                </label>
+            </div>
+
+            <textarea id="output-text" readonly placeholder="Os valores formatados para o PEC aparecerão aqui automaticamente..."></textarea>
+
+            <button class="btn-primary" id="btn-copy" type="button">Copiar Texto</button>
+            <br><button class="btn-primary" id="btn-clear" type="button">Limpar Tudo</button>
+        </div>
+    </main>
+
+    <details>
+        <summary><strong>Referências Bibliográficas</strong></summary>
+        <div class= "refs" style="padding: 15px; font-size: 13px; color: #555555; line-height: 1.5;">
+            <img src="mrpa_diagnostico.png" alt="Diagnóstico de Hipertensão via MRPA" style="width: 80%; display: block; margin: 0 auto; margin-bottom: 25px;">
+            <img src="mrpa_metas.png" alt="Metas para Controle Pressórico via MRPA" style="width: 80%; display: block; margin: 0 auto; margin-bottom: 25px;">
+            <img src="mrpa_tecnica.png" alt="Técnica de Medição da MRPA" style="width: 80%; display: block; margin: 0 auto; margin-bottom: 25px;">
+            <p>AMERICAN HEART ASSOCIATION (AHA). <strong>Monitoring Your Blood Pressure at Home</strong>. [S. l.], [2025]. Disponível em: <a href="https://www.heart.org/en/health-topics/high-blood-pressure/understanding-blood-pressure-readings/monitoring-your-blood-pressure-at-home" target="_blank">link</a>. Acesso em: 10 jul. 2026.</p>
+            <p>JONES, Daniel W. et al. 2025. <strong>AHA/ACC/AANP/AAPA/ABC/ACCP/ACPM/AGS/AMA/ASPC/NMA/PCNA/SGIM Guideline for the Prevention, Detection, Evaluation and Management of High Blood Pressure in Adults:</strong> A Report of the American College of Cardiology/American Heart Association Joint Committee on Clinical Practice Guidelines. Circulation, [S. l.], v. 152, n. 11, 2025. DOI: 10.1161/CIR.0000000000001356. Disponível em: <a href="https://www.ahajournals.org/doi/pdf/10.1161/CIR.0000000000001356" target="_blank">link</a>. Acesso em: 10 jul. 2026.</p>
+            <p>REVISTA BRASILEIRA DE HIPERTENSÃO. <strong>Diretrizes de Monitorização Residencial da Pressão Arterial.</strong> São Paulo: Sociedade Brasileira de Cardiologia - Departamento de Hipertensão Arterial, v. 25, n. 2, 2018. Disponível em: <a href="http://departamentos.cardiol.br/sbc-dha/profissional/revista/25-2.pdf" target="_blank">link</a>. Acesso em: 10 jul. 2026.</p> 
+            <p>SOCIEDADE BRASILEIRA DE CARDIOLOGIA; SOCIEDADE BRASILEIRA DE HIPERTENSÃO; SOCIEDADE BRASILEIRA DE NEFROLOGIA. <strong>Diretriz Brasileira de Hipertensão Arterial - 2025</strong>. Arquivos Brasileiros de Cardiologia, São Paulo, v. 122, n. 9, 2025. DOI: 10.36660/abc.20250624. Disponível em: <a href="https://abccardiol.org/wp-content/uploads/articles_xml/0066-782X-abc-122-09-e20250624/0066-782X-abc-122-09-e20250624.x66747.pdf" target="_blank">link</a>. Acesso em: 10 jul. 2026.</p>
+        </div>
+    </details>
+
+    <footer>
+        Desenvolvido por Gabriel Cordeiro de Mello Seixas (2026)
+    </footer>
+
+    <div class="toast" id="toast">Texto copiado com sucesso!</div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
